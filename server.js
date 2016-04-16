@@ -44,7 +44,7 @@ app.use('/shared',
         express.static(__dirname + '/shared'));
 
 app.use('/', function(request, response) {
-  response.render('index.html', {
+  response.render('index', {
     DEV_MODE: DEV_MODE
   })
 });
