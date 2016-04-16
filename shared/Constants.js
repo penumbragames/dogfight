@@ -36,43 +36,22 @@ Constants.WORLD_MAX = 2500;
 
 /**
  * @const
- * @type {number}
+ * @type {type}
  */
-Constants.CANVAS_WIDTH = 800;
-
-/**
- * @const
- * @type {number}
- */
-Constants.CANVAS_HEIGHT = 600;
-
-/**
- * @const
- * @type {number}
- */
-Constants.STATUS_IN_LOBBY = 0;
-
-/**
- * @const
- * @type {number}
- */
-Constants.STATUS_IN_ROOM = 1;
-
-/**
- * @const
- * @type {number}
- */
-Constants.STATUS_IN_GAME = 2;
+Constants.PLAYER_WEAPON_STATE = {
+  GUN: 0,
+  MISSILE: 2
+};
 
 if (typeof module === 'object') {
   /**
-   * This is used if Constants is being imported as a Node module.
+   * If this is being imported on the server side, then we load this with
+   * module.exports.
    */
   module.exports = Constants;
 } else {
   /**
-   * Otherwise, if this class is used on the client side, then just load
-   * it into the window context.
+   * Otherwise, we load it into the global namespace.
    */
-  window.Constants = Constants;
+  window.Util = Constants;
 }
