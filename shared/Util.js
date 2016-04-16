@@ -172,7 +172,14 @@ Util.choiceArray = function(array) {
 };
 
 if (typeof module === 'object') {
+  /**
+   * If this is being imported on the server side, then we load this with
+   * module.exports.
+   */
   module.exports = Util;
 } else {
+  /**
+   * Otherwise, we load it into the global namespace.
+   */
   window.Util = Util;
 }

@@ -13,7 +13,6 @@ var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var lessAutoprefix = require('less-plugin-autoprefix');
 var lessCleanCss = require('less-plugin-clean-css');
-var merge = require('merge-stream');
 var path = require('path');
 
 var getClosureCompilerConfiguration = function(options) {
@@ -68,10 +67,11 @@ gulp.task('js-lint', function() {
 });
 
 gulp.task('js-compile', function() {
-  return gulp.src(['./public/js/**/*.js'])
+  return gulp.src(['./public/js/**/*.js',
+                   './shared/*.js'])
     .pipe(getClosureCompilerConfiguration({
       filename: 'minified.js'
-    })
+    }))
     .pipe(gulp.dest('./public/dist'));
 });
 

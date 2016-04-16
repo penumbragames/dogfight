@@ -8,7 +8,7 @@
 /**
  * @type {Function}
  */
-function io() {}
+var io = function() {};
 
 /**
  * @param {string} name
