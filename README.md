@@ -1,5 +1,5 @@
 # Dogfight
-Dogfight
+Multiplayer 3D Aerial Battle
 
 ## Technical:
   - Made with NodeJS and Socket.IO
