@@ -4,12 +4,18 @@
  */
 
 var socket = io();
-var game = Game.create(socket, $('#gameCanvas')[0], $('#uiCanvas')[0]);
+var map = [];
+var game = Game.create(socket,
+                       $('#gameCanvas')[0],
+                       $('#uiCanvas')[0],
+                       map);
 
 $(document).ready(function() {
-  $('#gameCanvas').prop({
-    width: $(window).width(),
-    height: $(window).height()
+  $.each(['#gameCanvas', '#uiCanvas'], function(i, value) {
+      value.prop({
+        width: $(window).width(),
+        height: $(window).height()
+      });
   });
 
   $('#name-input').focus();

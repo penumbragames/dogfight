@@ -11,6 +11,7 @@ var THREE = {
   'Vector3': function() {},
   'Geometry': function() {},
   'BoxGeometry': function() {},
+  'SphereGeometry': function() {},
   'PerspectiveCamera': function() {},
   'Scene': function() {},
   'WebGLRenderer': function() {},
