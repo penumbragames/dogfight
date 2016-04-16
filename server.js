@@ -24,7 +24,6 @@ var express = require('express');
 var http = require('http');
 var morgan = require('morgan');
 var socketIO = require('socket.io');
-var mongodb = require('mongodb');
 
 var Game = require('./lib/Game');
 
@@ -33,7 +32,7 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
-var game = Game.create();
+var game = Game.create(io);
 
 app.set('port', PORT_NUMBER);
 app.set('view engine', 'pug');
@@ -72,6 +71,10 @@ io.on('connection', function(socket) {
         success: true
       });
     }
+  });
+
+  socket.on('player-action', function(data) {
+    game.updatePlayerOnInput(socket.id, data);
   });
 
   // When a player no-usernames, remove them from the game.
