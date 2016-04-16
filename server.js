@@ -77,7 +77,6 @@ io.on('connection', function(socket) {
     game.updatePlayerOnInput(socket.id, data);
   });
 
-  // When a player no-usernames, remove them from the game.
   socket.on('disconnect', function() {
     game.removePlayer(socket.id);
   });
