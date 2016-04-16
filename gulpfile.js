@@ -22,7 +22,8 @@ var getClosureCompilerConfiguration = function(options) {
   return closureCompiler({
     externs: [
       compilerPackage.compiler.CONTRIB_PATH + '/externs/jquery-1.9.js',
-      basePath + '/extern/extern.js'
+      basePath + '/extern/extern.js',
+      basePath + '/extern/threejs.extern.js'
     ],
     warning_level: 'VERBOSE',
     compilation_level: 'ADVANCED_OPTIMIZATIONS',
