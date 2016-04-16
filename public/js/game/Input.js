@@ -18,11 +18,7 @@ function Input(element) {
   this.rightClick = false;
   this.mouseCoords = [0, 0];
 
-  this.left = false;
-  this.up = false;
-  this.right = false;
-  this.down = false;
-  this.miscKeys = {};
+  this.keys = {};
 }
 
 /**
@@ -99,27 +95,7 @@ Input.prototype.onMouseMove = function(event) {
  * @param {Event} event The event passed to this function.
  */
 Input.prototype.onKeyDown = function(event) {
-  switch (event.keyCode) {
-    case 37:
-    case 65:
-      this.left = true;
-      break;
-    case 38:
-    case 87:
-      this.up = true;
-      break;
-    case 39:
-    case 68:
-      this.right = true;
-      break;
-    case 40:
-    case 83:
-      this.down = true;
-      break;
-    default:
-      this.miscKeys[event.keyCode] = true;
-      break;
-  }
+  this.keys[event.keyCode] = true;
 };
 
 /**
@@ -128,25 +104,5 @@ Input.prototype.onKeyDown = function(event) {
  * @param {Event} event The event passed to this function.
  */
 Input.prototype.onKeyUp = function(event) {
-  switch (event.keyCode) {
-    case 37:
-    case 65:
-      this.left = false;
-      break;
-    case 38:
-    case 87:
-      this.up = false;
-      break;
-    case 39:
-    case 68:
-      this.right = false;
-      break;
-    case 40:
-    case 83:
-      this.down = false;
-      break;
-    default:
-      this.miscKeys[event.keyCode] = false;
-      break;
-  }
+  this.keys[event.keyCode] = false;
 };

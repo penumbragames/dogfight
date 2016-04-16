@@ -11,7 +11,7 @@ $(document).ready(function() {
     width: $(window).width(),
     height: $(window).height()
   });
-  
+
   $('#name-input').focus();
 
   $('#name-form').submit = function() {
@@ -27,7 +27,7 @@ $(document).ready(function() {
     });
 
     return false;
-  }
+  };
 
   init();
 });

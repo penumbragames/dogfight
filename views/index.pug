@@ -1,0 +1,26 @@
+extends ./layout.jade
+
+block head
+
+block body
+  div#name-prompt
+    form#name-form
+      input#name-input(placeholder='Name')
+      input#name-submit(type='submit')
+  div#container
+    canvas#gameCanvas
+    canvas#uiCanvas
+    
+block scripts
+  script(src="/public/bower/jquery/dist/jquery.min.js")
+  script(src="/socket.io/socket.io.js")
+  if DEV_MODE
+    script(src="/shared/Constants.js")
+    script(src="/shared/Util.js")
+    script(src="/public/js/game/UIDrawing.js")
+    script(src="/public/js/game/GameDrawing.js")
+    script(src="/public/js/game/Game.js")
+    script(src="/public/js/game/Input.js")
+    script(src="/public/js/client.js")
+  else
+    script(src="/public/dist/index.min.js")
