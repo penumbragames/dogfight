@@ -24,7 +24,6 @@ var express = require('express');
 var http = require('http');
 var morgan = require('morgan');
 var socketIO = require('socket.io');
-var swig = require('swig')
 var mongodb = require('mongodb');
 
 var Game = require('./lib/Game');
@@ -36,10 +35,8 @@ var io = socketIO(server);
 
 var game = Game.create();
 
-app.engine('html', swig.renderFile);
-
 app.set('port', PORT_NUMBER);
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
 app.use(morgan(':date[web] :method :url :req[header] :remote-addr :status'));
 app.use('/public',
