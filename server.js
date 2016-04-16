@@ -85,7 +85,7 @@ io.on('connection', function(socket) {
 /**
  * The server side game loop runs at approximately 60Hz to update and send the
  * state of the server.
- * Note: The actual game updates are tick-independent.
+ * Note: The actual game updates are tick independent.
  */
 setInterval(function() {
   game.update();

@@ -24,12 +24,13 @@ Game.prototype.update = function() {
   var input = this.inputHandler;
 
   var packet = {
-    keyboardState: {
-      up: input.keys[87] || input.keys[38],
-      down: input.keys[83] || input.keys[40],
+    controls: {
+      accelerate: input.keys[87] || input.keys[38],
+      decelerate: input.keys[83] || input.keys[40],
       gunSelect: input.keys[49],
       missileSelect: input.keys[50]
-    }
+    },
+    mouseControl: [0, 0]
   };
 
   console.log(packet);
