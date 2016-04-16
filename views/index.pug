@@ -1,4 +1,4 @@
-extends ./layout.jade
+extends ./layout.pug
 
 block head
 
@@ -10,7 +10,7 @@ block body
   div#container
     canvas#gameCanvas
     canvas#uiCanvas
-    
+
 block scripts
   script(src="/public/bower/jquery/dist/jquery.min.js")
   script(src="/socket.io/socket.io.js")

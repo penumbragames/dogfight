@@ -36,12 +36,18 @@ Constants.WORLD_MAX = 2500;
 
 /**
  * @const
- * @type {type}
+ * @type {Object}
  */
 Constants.PLAYER_WEAPON_STATE = {
   GUN: 0,
   MISSILE: 2
 };
+
+/**
+ * @const
+ * @type {number}
+ */
+Constants.PLAYER_AFK_TIME = 60000;
 
 if (typeof module === 'object') {
   /**
