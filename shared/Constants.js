@@ -12,11 +12,6 @@ function Constants() {
 }
 
 /**
- * The world will always be a square, so there's no need for an x and y max.
- * All values are in pixels.
- */
-
-/**
  * @const
  * @type {string}
  */
