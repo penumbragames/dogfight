@@ -27,10 +27,14 @@ var socketIO = require('socket.io');
 var swig = require('swig')
 var mongodb = require('mongodb');
 
+var Game = require('./lib/Game');
+
 // Initialization.
 var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
+
+var game = Game.create();
 
 app.engine('html', swig.renderFile);
 
@@ -60,18 +64,22 @@ io.on('connection', function(socket) {
    * their username through the callback.
    */
   socket.on('new-player', function(data, callback) {
-    var username = socket.handshake.session.username;
-    if (!username) {
-      socket.emit('no-username');
-      return;
+    if (!data.name || data.name.length > 20) {
+      callback({
+        success: false,
+        message: "Invalid name! Your name cannot be blank or over 20 chars."
+      })
+    } else {
+      game.addNewPlayer(socket.id, data.name);
+      callback({
+        success: true
+      });
     }
-    var status = lobbyManager.addPlayer(socket.id, username);
-    callback(status);
   });
 
   // When a player no-usernames, remove them from the game.
   socket.on('disconnect', function() {
-    lobbyManager.removePlayer(socket.id);
+    game.removePlayer(socket.id);
   });
 });
 
