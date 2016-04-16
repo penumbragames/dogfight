@@ -24,3 +24,16 @@ Map.ENTITIES = [
     hitboxSize: 4
   }
 ];
+
+if (typeof module === 'object') {
+  /**
+   * If this is being imported on the server side, then we load this with
+   * module.exports.
+   */
+  module.exports = Map;
+} else {
+  /**
+   * Otherwise, we load it into the global namespace.
+   */
+  window.Map = Map;
+}

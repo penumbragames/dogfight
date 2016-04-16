@@ -54,5 +54,5 @@ if (typeof module === 'object') {
   /**
    * Otherwise, we load it into the global namespace.
    */
-  window.Util = Constants;
+  window.Constants = Constants;
 }
