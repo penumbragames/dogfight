@@ -60,42 +60,50 @@ Util.linearScale = function(x, a1, a2, b1, b2) {
 };
 
 /**
- * Returns the Manhattan Distance between two points given their x and y
+ * Returns the Manhattan Distance between two points given their x, y, and z
  * coordinates.
  * @param {number} x1 The x-coordinate of the first point.
  * @param {number} y1 The y-coordinate of the first point.
+ * @param {number} z1 The z-coordinate of the first point.
  * @param {number} x2 The x-coordinate of the second point.
  * @param {number} y2 The y-coordinate of the second point.
+ * @param {number} z2 The z-coordinate of the second point.
  * @return {number}
  */
-Util.getManhattanDistance = function(x1, y1, x2, y2) {
-  return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+Util.getManhattanDistance = function(x1, y1, z1, x2, y2, z2) {
+  return Math.abs(x1 - x2) + Math.abs(y1 - y2) + Math.abs(z1 - z2);
 };
 
 /**
  * Returns the squared Euclidean distance between two points given their
- * x and y coordinates.
+ * x, y, and z coordinates.
  * @param {number} x1 The x-coordinate of the first point.
  * @param {number} y1 The y-coordinate of the first point.
+ * @param {number} z1 The z-coordinate of the first point.
  * @param {number} x2 The x-coordinate of the second point.
  * @param {number} y2 The y-coordinate of the second point.
+ * @param {number} z2 The z-coordinate of the second point.
  * @return {number}
  */
-Util.getEuclideanDistance2 = function(x1, y1, x2, y2) {
-  return ((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2));
+Util.getEuclideanDistance2 = function(x1, y1, z1, x2, y2, z2) {
+  return ((x1 - x2) * (x1 - x2)) +
+    ((y1 - y2) * (y1 - y2)) +
+    ((z1 - z2) * (z1 - z2));
 };
 
 /**
  * Returns the true Euclidean distance between two points given their
- * x and y coordinates.
+ * x, y, and z coordinates.
  * @param {number} x1 The x-coordinate of the first point.
  * @param {number} y1 The y-coordinate of the first point.
+ * @param {number} z1 The z-coordinate of the first point.
  * @param {number} x2 The x-coordinate of the second point.
  * @param {number} y2 The y-coordinate of the second point.
+ * @param {number} z2 The z-coordinate of the second point.
  * @return {number}
  */
-Util.getEuclideanDistance = function(x1, y1, x2, y2) {
-  return Math.sqrt(Util.getEuclideanDistance2(x1, y1, x2, y2));
+Util.getEuclideanDistance = function(x1, y1, z1, x2, y2, z2) {
+  return Math.sqrt(Util.getEuclideanDistance2(x1, y1, x1, x2, y2, z2));
 };
 
 /**
