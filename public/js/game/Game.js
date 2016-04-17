@@ -91,6 +91,10 @@ Game.prototype.receiveGameState = function(data) {
     this.self.update(data['self']['position'], data['self']['orientation']);
   } else {
     this.self = Player.create(this.width / this.height);
+    this.self.camera.up = new THREE.Vector3(0, 0, 1);
+    this.self.camera.position.set(30, 30, 30);
+    this.self.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.scene.add(this.self.camera);
   }
   
   this.otherPlayers = data['otherPlayers'];
