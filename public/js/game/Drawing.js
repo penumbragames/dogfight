@@ -12,7 +12,7 @@
 function Drawing(scene) {
   this.scene = scene;
 
-  this.map = [];  
+  this.map = [];
   this.otherPlayers = [];
   this.bullets = [];
   this.missiles = [];
@@ -40,7 +40,7 @@ Drawing.randomBox = function() {
   mesh.position.set(box['position'][0],
                     box['position'][1],
                     box['position'][2]);
-  return mesh;  
+  return mesh;
 };
 
 /**
@@ -54,7 +54,7 @@ Drawing.prototype.setMap = function(map) {
   });
   var floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
   this.scene.add(floorMesh);
-  
+
   for (var i = 0; i < 500; i++) {
     var newMesh = Drawing.randomBox();
     this.map.push(newMesh);
@@ -100,14 +100,18 @@ Drawing.prototype.redrawBullets = function(bullets) {
   this.bullets = [];
 
   for (var i = 0; i < bullets.length; i++) {
-    var bulletGeometry = new THREE.BoxGeometry(this.bullets[i]['hitboxSize'][0],
-                                               this.bullets[i]['hitboxSize'][1],
-                                               this.bullets[i]['hitboxSize'][2]);
+    console.log(bullets[i]);
+    var bulletGeometry = new THREE.BoxGeometry(
+        bullets[i]['hitboxSize'][0],
+        bullets[i]['hitboxSize'][1],
+        bullets[i]['hitboxSize'][2]);
     var bulletMaterial = new THREE.MeshBasicMaterial({
       color: 0xCCCCCC
     });
     var bulletMesh = new THREE.Mesh(bulletGeometry, bulletMaterial);
-    bulletMesh.position.set.apply(this, bullets[i]['position']);
+    bulletMesh.position.set(bullets[i]['position'][0],
+                            bullets[i]['position'][1],
+                            bullets[i]['position'][2]);
     this.scene.add(bulletMesh);
     this.bullets.push(bulletMesh);
   }

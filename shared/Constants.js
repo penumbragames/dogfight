@@ -33,7 +33,7 @@ Constants.WORLD_MAX = 2500;
  * @const
  * @type {Object}
  */
-Constants.PLAYER_WEAPON_STATE = {
+Constants.PLAYER_WEAPONS = {
   BULLET: 'BULLET',
   MISSILE: 'MISSILE'
 };

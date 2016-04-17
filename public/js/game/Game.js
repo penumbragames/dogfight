@@ -140,8 +140,6 @@ Game.prototype.draw = function() {
     this.drawing.redrawMissiles(this.missiles);
     this.drawing.redrawExplosions(this.explosions);
     this.renderer.render(this.scene, this.self.camera);
-
-
   }
 };
 
