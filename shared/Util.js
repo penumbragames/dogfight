@@ -179,6 +179,18 @@ Util.choiceArray = function(array) {
   return array[Util.randRangeInt(0, array.length)];
 };
 
+/**
+ * This function normalizes an angle from 0 to 2 * Math.PI.
+ * @param {number} theta The angle to normalize.
+ * @return {number}
+ */
+Util.normalizeRadians = function(theta) {
+  while (theta < 0) {
+    theta += Math.PI;
+  }
+  return theta % (2 * Math.PI);
+};
+
 if (typeof module === 'object') {
   /**
    * If this is being imported on the server side, then we load this with
