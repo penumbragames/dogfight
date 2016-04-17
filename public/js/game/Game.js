@@ -6,6 +6,7 @@
 
 /**
  * Constructor for a Game object.
+ * @constructor
  * @param {Socket} socket
  * @param {number} width
  * @param {number} height
@@ -37,7 +38,15 @@ function Game(socket, width, height, scene,
   this.animationFrameId = 0;
 }
 
-Game.create = function(socket, gameCanvas, uiCanvas, map) {
+/**
+ * [function description]
+ * @param {Object} socket
+ * @param {Element} gameContainer [description]
+ * @param {Element} uiCanvas [description]
+ * @param {Map} map [description]
+ * @return {Game}
+ */
+Game.create = function(socket, gameContainer, uiCanvas, map) {
   var width = $(window).width();
   var height = $(window).height();
 
@@ -50,19 +59,25 @@ Game.create = function(socket, gameCanvas, uiCanvas, map) {
 
   var ui = UI.create(uiCanvas);
   var inputHandler = Input.create(uiCanvas);
-  var self = Player.create([0, 0, 0],
-                           this.width / this.height);
+  var self = Player.create([0, 0, 0], width / height);
 
   return new Game(socket, width, height, scene,
                   drawing, ui, inputHandler);
 };
 
+/**
+ * [function description]
+ */
 Game.prototype.init = function() {
   socket.on('server-state', bind(this, function(data) {
     this.receiveGameState(data);
   }));
 };
 
+/**
+ * [function description]
+ * @param {[type]} data [description]
+ */
 Game.prototype.receiveGameState = function(data) {
   this.self = data['self'];
   this.otherPlayers = data['otherPlayers'];
@@ -71,6 +86,9 @@ Game.prototype.receiveGameState = function(data) {
   this.explosions = data['explosions'];
 };
 
+/**
+ * [function description]
+ */
 Game.prototype.update = function() {
   var input = this.inputHandler;
   var mouseCoords = [
@@ -96,15 +114,24 @@ Game.prototype.update = function() {
   this.animate();
 };
 
+/**
+ * [function description]
+ */
 Game.prototype.draw = function() {
   this.drawing.redrawOtherPlayers(this.otherPlayers);
 };
 
+/**
+ * [function description]
+ */
 Game.prototype.animate = function() {
   this.animationFrameID = window.requestAnimationFrame(
-    Util.bind(this, this.update));
+      bind(this, this.update));
 };
 
+/**
+ * [function description]
+ */
 Game.prototype.stopAnimation = function() {
   window.cancelAnimationFrame(this.animationFrameID);
 };
