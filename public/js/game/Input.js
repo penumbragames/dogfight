@@ -35,13 +35,6 @@ Input.create = function(element) {
   return input;
 };
 
-Input.prototype.pointerLockCallback = function() {
-  this.mouseLocked = !!(
-    this.element.pointerLockElement == element ||
-      this.element.mozPointerLockElement == element ||
-      this.element.webkitPointerLockElement == element);
-}
-
 /**
  * This method adds event listeners to the element that this class should
  * track.
@@ -52,16 +45,11 @@ Input.prototype.applyEventHandlers = function() {
   this.element.addEventListener('mousemove', bind(this, this.onMouseMove));
   this.element.addEventListener('keyup', bind(this, this.onKeyUp));
   this.element.addEventListener('keydown', bind(this, this.onKeyDown));
-  
+
   this.element.addEventListener('pointerlockchange', pointerLockCallback);
   this.element.addEventListener('mozpointerlockchange', pointerLockCallback);
   this.element.addEventListener('webkitpointerlockchange', pointerLockCallback);
 };
-
-Input.prototype.lockPointer = function() {
-  this.element.requestPointerLock();
-  this.mouseLocked = true;
-};};
 
 /**
  * This method removes the added event listeners from the element that this
@@ -73,10 +61,6 @@ Input.prototype.removeEventHandlers = function() {
   this.element.removeEventListener('mousemove', bind(this, this.onMouseMove));
   this.element.removeEventListener('keyup', bind(this, this.onKeyUp));
   this.element.removeEventListener('keydown', bind(this, this.onKeyDown));
-  
-  this.element.removeEventListener('pointerlockchange', pointerLockCallback);
-  this.element.removeEventListener('mozpointerlockchange', pointerLockCallback);
-  this.element.removeEventListener('webkitpointerlockchange', pointerLockCallback);
 };
 
 /**
