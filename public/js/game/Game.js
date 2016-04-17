@@ -62,7 +62,7 @@ Game.create = function(socket, gameContainer, uiCanvas) {
   var ui = UI.create(uiCanvas);
   var inputHandler = Input.create(uiCanvas);
 
-  gameContainer.appendChild(rendererDOM);
+  gameContainer.insertBefore(rendererDOM, uiCanvas);
   return new Game(socket, width, height, scene, renderer,
                   drawing, ui, inputHandler);
 };
@@ -109,11 +109,11 @@ Game.prototype.receiveGameState = function(data) {
 Game.prototype.update = function() {
   if (!!this.self) {
     var input = this.inputHandler;
-    var mouseCoords = [
+    var mouseControl = [
       Util.linearScale(input.mouseCoords[0], 0, this.width, -1, 1),
-      Util.linearScale(input.mouseCoords[0], 0, this.height, 1, -1)
+      Util.linearScale(input.mouseCoords[1], 0, this.height, 1, -1)
     ];
-
+    console.log(input.mouseCoords);
     socket.emit('player-action', {
       controls: {
         accelerate: input.keys[87] || input.keys[38],
@@ -122,7 +122,7 @@ Game.prototype.update = function() {
         missileSelect: input.keys[50]
       },
       fire: input.leftClick,
-      mouseControl: mouseCoords
+      mouseControl: mouseControl
     });
   }
   
