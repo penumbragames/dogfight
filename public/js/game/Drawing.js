@@ -75,9 +75,9 @@ Drawing.prototype.redrawOtherPlayers = function(otherPlayers) {
   this.otherPlayers = [];
 
   for (var i = 0; i < otherPlayers.length; i++) {
-    var playerGeometry = new THREE.BoxGeometry(otherPlayers[i]['hitboxSize'][0],
-                                               otherPlayers[i]['hitboxSize'][1],
-                                               otherPlayers[i]['hitboxSize'][2]);
+    var playerGeometry = new THREE.BoxGeometry(otherPlayers[i]['hitboxSize'],
+                                               otherPlayers[i]['hitboxSize'],
+                                               otherPlayers[i]['hitboxSize']);
     var playerMaterial = new THREE.MeshBasicMaterial({
       color: 0xFF0000
     });
@@ -102,9 +102,9 @@ Drawing.prototype.redrawBullets = function(bullets) {
   for (var i = 0; i < bullets.length; i++) {
     console.log(bullets[i]);
     var bulletGeometry = new THREE.BoxGeometry(
-        bullets[i]['hitboxSize'][0],
-        bullets[i]['hitboxSize'][1],
-        bullets[i]['hitboxSize'][2]);
+        bullets[i]['hitboxSize'],
+        bullets[i]['hitboxSize'],
+        bullets[i]['hitboxSize']);
     var bulletMaterial = new THREE.MeshBasicMaterial({
       color: 0xCCCCCC
     });
@@ -129,9 +129,9 @@ Drawing.prototype.redrawMissiles = function(missiles) {
   this.missiles = [];
 
   for (var i = 0; i < missiles.length; i++) {
-    var missileGeometry = new THREE.BoxGeometry(this.missiles[i]['hitboxSize'][0],
-                                                this.missiles[i]['hitboxSize'][1],
-                                                this.missiles[i]['hitboxSize'][2]);
+    var missileGeometry = new THREE.BoxGeometry(this.missiles[i]['hitboxSize'],
+                                                this.missiles[i]['hitboxSize'],
+                                                this.missiles[i]['hitboxSize']);
     var missileMaterial = new THREE.MeshBasicMaterial({
       color: 0xCCCCCC
     });
