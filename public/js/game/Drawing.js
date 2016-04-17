@@ -12,7 +12,7 @@
 function Drawing(scene) {
   this.scene = scene;
 
-  this.map = [];
+  this.map = [];  
   this.otherPlayers = [];
   this.bullets = [];
   this.missiles = [];
@@ -34,16 +34,14 @@ Drawing.create = function(scene) {
  */
 Drawing.prototype.setMap = function(map) {
   for (var i = 0; i < map.length; i++) {
-    var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'] * 2,
-                                            map[i]['hitboxSize'] * 2,
-                                            map[i]['hitboxSize'] * 2);
+    var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'][0],
+                                            map[i]['hitboxSize'][1],
+                                            map[i]['hitboxSize'][2]);
     var newMaterial = new THREE.MeshBasicMaterial({
-      color: map[i].color
+      color: 0x0000FF
     });
     var newMesh = new THREE.Mesh(newGeometry, newMaterial);
-    newMesh.position.setX(map[i]['position'][0]);
-    newMesh.position.setY(map[i]['position'][1]);
-    newMesh.position.setZ(map[i]['position'][2]);
+    newMesh.position.set.apply(this, map[i]['position']);
     this.map.push(newMesh);
     this.scene.add(newMesh);
   }
@@ -62,17 +60,14 @@ Drawing.prototype.redrawOtherPlayers = function(otherPlayers) {
   this.otherPlayers = [];
 
   for (var i = 0; i < otherPlayers.length; i++) {
-    var playerGeometry = new THREE.BoxGeometry(
-        otherPlayers[i]['hitboxSize'][0] * 2,
-        otherPlayers[i]['hitboxSize'][1] * 2,
-        otherPlayers[i]['hitboxSize'][2] * 2);
+    var playerGeometry = new THREE.BoxGeometry(otherPlayers[i]['hitboxSize'][0],
+                                               otherPlayers[i]['hitboxSize'][1],
+                                               otherPlayers[i]['hitboxSize'][2]);
     var playerMaterial = new THREE.MeshBasicMaterial({
       color: 0xFF0000
     });
     var playerMesh = new THREE.Mesh(playerGeometry, playerMaterial);
-    playerMesh.position.setX(otherPlayers[i]['position'][0]);
-    playerMesh.position.setY(otherPlayers[i]['position'][1]);
-    playerMesh.position.setZ(otherPlayers[i]['position'][2]);
+    playerMesh.position.set.apply(this, otherPlayers[i]['position']);
     this.scene.add(playerMesh);
     this.otherPlayers.push(playerMesh);
   }
@@ -90,17 +85,14 @@ Drawing.prototype.redrawBullets = function(bullets) {
   this.bullets = [];
 
   for (var i = 0; i < bullets.length; i++) {
-    var bulletGeometry = new THREE.BoxGeometry(
-        bullets[i]['hitboxSize'][0] * 2,
-        bullets[i]['hitboxSize'][1] * 2,
-        bullets[i]['hitboxSize'][2] * 2);
+    var bulletGeometry = new THREE.BoxGeometry(this.bullets[i]['hitboxSize'][0],
+                                               this.bullets[i]['hitboxSize'][1],
+                                               this.bullets[i]['hitboxSize'][2]);
     var bulletMaterial = new THREE.MeshBasicMaterial({
       color: 0xCCCCCC
     });
     var bulletMesh = new THREE.Mesh(bulletGeometry, bulletMaterial);
-    bulletMesh.position.setX(bullets[i]['position'][0]);
-    bulletMesh.position.setY(bullets[i]['position'][1]);
-    bulletMesh.position.setZ(bullets[i]['position'][2]);
+    bulletMesh.position.set.apply(this, bullets[i]['position']);
     this.scene.add(bulletMesh);
     this.bullets.push(bulletMesh);
   }
@@ -118,17 +110,14 @@ Drawing.prototype.redrawMissiles = function(missiles) {
   this.missiles = [];
 
   for (var i = 0; i < missiles.length; i++) {
-    var missileGeometry = new THREE.BoxGeometry(
-        missiles[i]['hitboxSize'][0] * 2,
-        missiles[i]['hitboxSize'][1] * 2,
-        missiles[i]['hitboxSize'][2] * 2);
+    var missileGeometry = new THREE.BoxGeometry(this.missiles[i]['hitboxSize'][0],
+                                                this.missiles[i]['hitboxSize'][1],
+                                                this.missiles[i]['hitboxSize'][2]);
     var missileMaterial = new THREE.MeshBasicMaterial({
-      color: 0x999999
+      color: 0xCCCCCC
     });
     var missileMesh = new THREE.Mesh(missileGeometry, missileMaterial);
-    missileMesh.position.setX(missiles[i]['position'][0]);
-    missileMesh.position.setY(missiles[i]['position'][1]);
-    missileMesh.position.setZ(missiles[i]['position'][2]);
+    missileMesh.position.set.apply(this, missiles[i]['position']);
     this.scene.add(missileMesh);
     this.missiles.push(missileMesh);
   }

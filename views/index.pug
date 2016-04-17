@@ -1,6 +1,7 @@
 extends ./layout.pug
 
 block head
+  link(rel='stylesheet', href='/public/dist/minified.css')
 
 block body
   div#name-prompt
@@ -18,6 +19,7 @@ block scripts
   if DEV_MODE
     script(src="/shared/Constants.js")
     script(src="/shared/Util.js")
+    script(src="/shared/Map.js")
     script(src="/shared/bind.js")
     script(src="/public/js/game/UI.js")
     script(src="/public/js/game/Drawing.js")

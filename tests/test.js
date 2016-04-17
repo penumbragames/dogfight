@@ -25,7 +25,7 @@ function between(n, low, high) {
 
 function init() {  
   camera = new THREE.PerspectiveCamera(70, $(window).width() / $(window).height(),
-                                           0.1, 1000);
+                                       0.1, 1000);
   camera.position.set(50, 50, 50);
   camera.up = new THREE.Vector3(0, 0, 1);
   camera.lookAt(new THREE.Vector3(0, 0, 0));  
@@ -52,13 +52,14 @@ function init() {
   for (var i = 0; i < test.length; i++) {
     switch (test[i].type) {
     case 'box':
-      var mesh = new THREE.Mesh(new THREE.BoxGeometry(test[i].size,
-                                                      test[i].size,
-                                                      test[i].size),
-                                new THREE.MeshBasicMaterial({
-                                  color: test[i].color
-                                }));
-      mesh.position.set.apply(test[i].position);
+      var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(test[i].size,
+                              test[i].size,
+                              test[i].size),
+        new THREE.MeshBasicMaterial({
+          color: test[i].color
+        }));
+      mesh.position.set.apply(this, test[i].position);
       scene.add(mesh);
       break;
     case 'line':
