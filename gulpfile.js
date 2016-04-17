@@ -79,7 +79,7 @@ gulp.task('js-compile', function() {
 });
 
 gulp.task('less', function() {
-  return gulp.src('./public/less/index.less')
+  return gulp.src('./public/less/*.less')
     .pipe(getLessConfiguration())
     .pipe(rename('minified.css'))
     .pipe(gulp.dest('./public/dist'));
