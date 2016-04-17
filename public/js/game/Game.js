@@ -57,7 +57,7 @@ Game.create = function(socket, gameContainer, uiCanvas) {
   var renderer = new THREE.WebGLRenderer();
   renderer.setSize(width, height);
   var rendererDOM = renderer.domElement;
-  
+
   var drawing = Drawing.create(scene);
   var ui = UI.create(uiCanvas);
   var inputHandler = Input.create(uiCanvas);
@@ -72,7 +72,7 @@ Game.create = function(socket, gameContainer, uiCanvas) {
  */
 Game.prototype.init = function() {
   this.drawing.setMap(Map.ENTITIES);
-  
+
   socket.on('server-state', bind(this, function(data) {
     this.receiveGameState(data);
   }));
@@ -86,7 +86,7 @@ Game.prototype.init = function() {
  */
 Game.prototype.receiveGameState = function(data) {
   x = data;
-  
+
   if (!!this.self) {
     this.self.update(data['self']['position'], data['self']['orientation']);
   } else {
@@ -96,7 +96,7 @@ Game.prototype.receiveGameState = function(data) {
     this.self.camera.lookAt(new THREE.Vector3(0, 0, 0));
     this.scene.add(this.self.camera);
   }
-  
+
   this.otherPlayers = data['otherPlayers'];
   this.bullets = data['bullets'];
   this.missiles = data['missiles'];
@@ -111,7 +111,7 @@ Game.prototype.update = function() {
     var input = this.inputHandler;
     var mouseControl = [
       Util.linearScale(input.mouseCoords[0], 0, this.width, 1, -1),
-      Util.linearScale(input.mouseCoords[1], 0, this.height, -1, 1)
+      Util.linearScale(input.mouseCoords[1], 0, this.height, 1, -1)
     ];
     console.log(mouseControl);
     socket.emit('player-action', {
@@ -125,7 +125,7 @@ Game.prototype.update = function() {
       mouseControl: mouseControl
     });
   }
-  
+
   this.draw();
   this.animate();
 };
@@ -141,7 +141,7 @@ Game.prototype.draw = function() {
     this.drawing.redrawExplosions(this.explosions);
     this.renderer.render(this.scene, this.self.camera);
 
-    
+
   }
 };
 
