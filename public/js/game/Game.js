@@ -90,26 +90,28 @@ Game.prototype.receiveGameState = function(data) {
  * [function description]
  */
 Game.prototype.update = function() {
-  var input = this.inputHandler;
-  var mouseCoords = [
-    Util.linearScale(input.mouseCoords[0], 0, this.width, -1, 1),
-    Util.linearScale(input.mouseCoords[0], 0, this.height, 1, -1)
-  ];
+  if (this.self) {
+    var input = this.inputHandler;
+    var mouseCoords = [
+      Util.linearScale(input.mouseCoords[0], 0, this.width, -1, 1),
+      Util.linearScale(input.mouseCoords[0], 0, this.height, 1, -1)
+    ];
 
-  var packet = {
-    controls: {
-      accelerate: input.keys[87] || input.keys[38],
-      decelerate: input.keys[83] || input.keys[40],
-      gunSelect: input.keys[49],
-      missileSelect: input.keys[50]
-    },
-    mouseControl: mouseCoords
-  };
+    var packet = {
+      controls: {
+        accelerate: input.keys[87] || input.keys[38],
+        decelerate: input.keys[83] || input.keys[40],
+        gunSelect: input.keys[49],
+        missileSelect: input.keys[50]
+      },
+      mouseControl: mouseCoords
+    };
 
-  socket.emit('player-action', packet);
+    socket.emit('player-action', packet);
 
-  this.draw();
-  this.animate();
+    this.draw();
+    this.animate();
+  }
 };
 
 /**
