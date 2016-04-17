@@ -24,23 +24,10 @@ Player.create = function(position, aspectRatio) {
 };
 
 Player.prototype.update = function(position, orientation) {
-  this.camera.position.setX(position[0]);
-  this.camera.position.setY(position[1]);
-  this.camera.position.setZ(position[2]);
+  this.camera.position.set.apply(position);
+  this.camera.rotation.set.apply(orientation); // orientation = [roll, yaw, pitch]
   this.position.copy(this.camera.position);
+};
 
-  this.roll = orientation[0];
-  this.yaw = orientation[1];
-  this.pitch = orientation[2];
-  this.camera.rotation.set(roll, yaw, pitch);
-};
-  
-/*  
-    this.camera.lookAt(new THREE.Vector3(
-    Math.cos(this.roll) + Math.cos(this.yaw),
-    Math.sin(this.roll) + Math.sin(this.pitch),
-    Math.sin(this.yaw) + Math.cos(this.pitch)));
-*/
-};
   
   

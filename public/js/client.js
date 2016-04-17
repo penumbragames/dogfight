@@ -11,7 +11,7 @@ var game = Game.create(socket,
                        map);
 
 $(document).ready(function() {
-  $.each(['#gameCanvas', '#uiCanvas'], function(i, value) {
+  $.each([$('#gameCanvas'), $('#uiCanvas')], function(i, value) {
       value.prop({
         width: $(window).width(),
         height: $(window).height()
@@ -20,7 +20,9 @@ $(document).ready(function() {
 
   $('#name-input').focus();
 
-  $('#name-form').submit = function() {
+  $('#name-form').submit = function(e) {
+    e.preventDefault();
+    
     socket.emit('new-player', {
       name: 'blarg'
     }, function(data) {
@@ -32,6 +34,7 @@ $(document).ready(function() {
       }
     });
 
+    e.preventDefault();
     return false;
   };
 

@@ -106,8 +106,6 @@ Game.prototype.update = function() {
     mouseControl: mouseCoords
   };
 
-  console.log(packet);
-
   socket.emit('player-action', packet);
 
   this.draw();
