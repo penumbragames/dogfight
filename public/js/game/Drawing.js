@@ -34,9 +34,9 @@ Drawing.create = function(scene) {
  */
 Drawing.prototype.setMap = function(map) {
   for (var i = 0; i < map.length; i++) {
-    var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'][0],
-                                            map[i]['hitboxSize'][1],
-                                            map[i]['hitboxSize'][2]);
+    var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'],
+                                            map[i]['hitboxSize'],
+                                            map[i]['hitboxSize']);
     var newMaterial = new THREE.MeshBasicMaterial({
       color: 0x0000FF
     });

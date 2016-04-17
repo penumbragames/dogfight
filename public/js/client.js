@@ -5,7 +5,7 @@
 
 var socket = io();
 var game = Game.create(socket,
-                       $('#gameCanvas')[0],
+                       $('#container')[0],
                        $('#uiCanvas')[0]);
 
 $(document).ready(function() {
@@ -32,10 +32,10 @@ $(document).ready(function() {
     });
 
     e.preventDefault();
-    return false;
+    $('#container').show();
+    init();
   });
 
-  init();
 });
 
 function init() {

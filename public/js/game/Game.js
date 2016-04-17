@@ -72,6 +72,7 @@ Game.create = function(socket, gameContainer, uiCanvas) {
  */
 Game.prototype.init = function() {
   this.drawing.setMap(Map.ENTITIES);
+  
   socket.on('server-state', bind(this, function(data) {
     this.receiveGameState(data);
   }));
@@ -89,7 +90,7 @@ Game.prototype.receiveGameState = function(data) {
   if (!!this.self) {
     this.self.update(data['self']['position'], data['self']['orientation']);
   } else {
-    this.self = Player.create([0, 0, 0], this.width / this.height);
+    this.self = Player.create(this.width / this.height);
   }
   
   this.otherPlayers = data['otherPlayers'];
@@ -130,7 +131,6 @@ Game.prototype.update = function() {
  */
 Game.prototype.draw = function() {
   if (!!this.self) {
-    this.drawing.redrawOtherPlayers(this.otherPlayers);
     this.renderer.render(this.scene, this.self.camera);
   }
 };
