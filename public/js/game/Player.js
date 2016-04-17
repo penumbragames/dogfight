@@ -20,8 +20,15 @@ Player.create = function(aspectRatio) {
 Player.prototype.update = function(position, orientation) {
   this.camera.position.set(position[0], position[1], position[2]);
   // orientation = [pitch, yaw, roll]
-  this.camera.rotation.set(orientation[0], orientation[1], orientation[2]); 
+  //this.camera.rotation.set(orientation[0], orientation[1] - Math.PI, orientation[2]);
 
+  console.log(this.camera.rotation);
+
+  this.camera.rotation.order = 'ZYX';
+  this.camera.rotation.x = orientation[0];
+  this.camera.rotation.y = orientation[1];
+  this.camera.rotation.z = orientation[2];
+  
   for (var i = 0; i < 3; i++) {
     this.position[i] = this.camera.position[i];
   }

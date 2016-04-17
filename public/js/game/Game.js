@@ -92,7 +92,7 @@ Game.prototype.receiveGameState = function(data) {
   } else {
     this.self = Player.create(this.width / this.height);
     this.self.camera.up = new THREE.Vector3(0, 1, 0);
-    this.self.camera.position.set(30, 30, 30);
+    this.self.camera.position.set(30, 0, 50);
     this.self.camera.lookAt(new THREE.Vector3(0, 0, 0));
     this.scene.add(this.self.camera);
   }
