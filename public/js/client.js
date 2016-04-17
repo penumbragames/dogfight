@@ -20,9 +20,7 @@ $(document).ready(function() {
 
   $('#name-input').focus();
 
-  $('#name-form').submit = function(e) {
-    e.preventDefault();
-    
+  $('#name-form').submit(function(e) {
     socket.emit('new-player', {
       name: 'blarg'
     }, function(data) {
@@ -36,7 +34,7 @@ $(document).ready(function() {
 
     e.preventDefault();
     return false;
-  };
+  });
 
   init();
 });
