@@ -27,7 +27,8 @@ function Input(element) {
  * @return {Input}
  */
 Input.create = function(element) {
-  // This attribute is necessary to allow the element to listen to key events.
+  // This attribute is necessary to allow the element to listen to key events
+  // since the element is now selectable.
   element.setAttribute('tabindex', 1);
   var input = new Input(element);
   input.applyEventHandlers();
