@@ -33,6 +33,13 @@ Drawing.create = function(scene) {
  * @param {Object} map
  */
 Drawing.prototype.setMap = function(map) {
+  var floorGeometry = new THREE.BoxGeometry(2000, 1, 2000);
+  var floorMaterial = new THREE.MeshBasicMaterial({
+    color: 0xFFFFFF
+  });
+  var floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+  this.scene.add(floorMesh);
+  
   for (var i = 0; i < map.length; i++) {
     var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'],
                                             map[i]['hitboxSize'],
