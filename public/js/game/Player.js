@@ -18,7 +18,7 @@ Player.create = function(aspectRatio) {
 };
 
 Player.prototype.update = function(position, orientation) {
-  // this.camera.position.set(position[0], position[1], position[2]);
+  this.camera.position.set(position[0], position[1], position[2]);
   // orientation = [pitch, yaw, roll]
   this.camera.rotation.set(orientation[0], orientation[1], orientation[2]); 
 
