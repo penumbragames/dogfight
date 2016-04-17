@@ -110,8 +110,8 @@ Game.prototype.update = function() {
   if (!!this.self) {
     var input = this.inputHandler;
     var mouseControl = [
-      Util.linearScale(input.mouseCoords[0], 0, this.width, -1, 1),
-      Util.linearScale(input.mouseCoords[1], 0, this.height, 1, -1)
+      Util.linearScale(input.mouseCoords[0], 0, this.width, 1, -1),
+      Util.linearScale(input.mouseCoords[1], 0, this.height, -1, 1)
     ];
     console.log(mouseControl);
     socket.emit('player-action', {
