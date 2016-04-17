@@ -34,8 +34,8 @@ Constants.WORLD_MAX = 2500;
  * @type {Object}
  */
 Constants.PLAYER_WEAPON_STATE = {
-  GUN: 0,
-  MISSILE: 2
+  BULLET: 'BULLET',
+  MISSILE: 'MISSILE'
 };
 
 /**
