@@ -17,7 +17,6 @@ function Input(element) {
   this.leftClick = false;
   this.rightClick = false;
   this.mouseCoords = [0, 0];
-  this.mouseLocked = false;
 
   this.keys = {};
 }
@@ -45,10 +44,6 @@ Input.prototype.applyEventHandlers = function() {
   this.element.addEventListener('mousemove', bind(this, this.onMouseMove));
   this.element.addEventListener('keyup', bind(this, this.onKeyUp));
   this.element.addEventListener('keydown', bind(this, this.onKeyDown));
-
-  this.element.addEventListener('pointerlockchange', pointerLockCallback);
-  this.element.addEventListener('mozpointerlockchange', pointerLockCallback);
-  this.element.addEventListener('webkitpointerlockchange', pointerLockCallback);
 };
 
 /**
