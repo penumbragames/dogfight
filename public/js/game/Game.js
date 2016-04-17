@@ -130,7 +130,6 @@ Game.prototype.update = function() {
  */
 Game.prototype.draw = function() {
   if (!!this.self) {
-    console.log('draw');
     this.drawing.redrawOtherPlayers(this.otherPlayers);
     this.renderer.render(this.scene, this.self.camera);
   }

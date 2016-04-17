@@ -33,7 +33,6 @@ Drawing.create = function(scene) {
  * @param {Object} map
  */
 Drawing.prototype.setMap = function(map) {
-  console.log('Loading map');
   for (var i = 0; i < map.length; i++) {
     var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'][0],
                                             map[i]['hitboxSize'][1],
@@ -54,7 +53,6 @@ Drawing.prototype.setMap = function(map) {
  *   other players.
  */
 Drawing.prototype.redrawOtherPlayers = function(otherPlayers) {
-  console.log('players');
   for (var i = 0; i < this.otherPlayers.length; i++) {
     this.scene.remove(this.otherPlayers[i]);
   }
@@ -80,7 +78,6 @@ Drawing.prototype.redrawOtherPlayers = function(otherPlayers) {
  * @param {Array<Object>} bullets An array of the bullets to draw.
  */
 Drawing.prototype.redrawBullets = function(bullets) {
-  console.log('bullets');
   for (var i = 0; i < this.bullets.length; i++) {
     this.scene.remove(this.bullets[i]);
   }
@@ -106,7 +103,6 @@ Drawing.prototype.redrawBullets = function(bullets) {
  * @param {Array<Object>} missiles An array of the missiles to draw.
  */
 Drawing.prototype.redrawMissiles = function(missiles) {
-  console.log('missiles');
   for (var i = 0; i < this.missiles.length; i++) {
     this.scene.remove(this.missiles[i]);
   }
