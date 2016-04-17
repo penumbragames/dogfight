@@ -4,11 +4,9 @@
  */
 
 var socket = io();
-var map = [];
 var game = Game.create(socket,
                        $('#gameCanvas')[0],
-                       $('#uiCanvas')[0],
-                       map);
+                       $('#uiCanvas')[0]);
 
 $(document).ready(function() {
   $.each([$('#gameCanvas'), $('#uiCanvas')], function(i, value) {
@@ -19,6 +17,7 @@ $(document).ready(function() {
   });
 
   $('#name-input').focus();
+  $('#container').hide();
 
   $('#name-form').submit(function(e) {
     socket.emit('new-player', {

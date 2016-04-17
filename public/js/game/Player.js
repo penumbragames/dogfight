@@ -17,10 +17,10 @@ Player.create = function(position, aspectRatio) {
   var camera = new THREE.PerspectiveCamera(
     Player.CAMERA_FIELD_OF_VIEW, aspectRatio,
     Player.CAMERA_NEAR_CLIPPING_PLANE, Player.CAMERA_FAR_CLIPPING_PLANE);
-  var position = new THREE.Vector3(position[0],
-                                   position[1],
-                                   position[2]);
-  return new Player(camera, position);
+  var positionVector = new THREE.Vector3(position[0],
+                                         position[1],
+                                         position[2]);
+  return new Player(camera, positionVector);
 };
 
 Player.prototype.update = function(position, orientation) {
