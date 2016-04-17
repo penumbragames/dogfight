@@ -14,16 +14,16 @@ function Map() {
  * @const
  * @type {Array<Object>}
  */
-Map.ENTITIES = [
-  {
-    position: [10, 5, 10],
-    hitboxSize: 10
-  },
-  {
-    position: [20, 2, 20],
-    hitboxSize: 4
-  }
-];
+Map.ENTITIES = [];
+
+Map.randomBox = function() {
+  return {
+    position: [Util.randRangeInt(-1000, 1000),
+               5,
+               Util.randRangeInt(-1000, 1000)],
+    hitboxSize: Util.randRangeInt(5, 20)
+  };
+}
 
 if (typeof module === 'object') {
   /**

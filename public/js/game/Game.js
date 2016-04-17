@@ -113,7 +113,7 @@ Game.prototype.update = function() {
       Util.linearScale(input.mouseCoords[0], 0, this.width, 1, -1),
       Util.linearScale(input.mouseCoords[1], 0, this.height, 1, -1)
     ];
-    console.log(mouseControl);
+
     socket.emit('player-action', {
       controls: {
         accelerate: input.keys[87] || input.keys[38],

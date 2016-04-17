@@ -28,27 +28,35 @@ Drawing.create = function(scene) {
   return new Drawing(scene);
 };
 
+Drawing.randomBox = function() {
+  var box = Map.randomBox();
+  var geometry = new THREE.BoxGeometry(box['hitboxSize'],
+                                       box['hitboxSize'],
+                                       box['hitboxSize']);
+  var material = new THREE.MeshBasicMaterial({
+    color: Util.randRangeInt(0, 0xFFFFFF)
+  });
+  var mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(box['position'][0],
+                    box['position'][1],
+                    box['position'][2]);
+  return mesh;  
+};
+
 /**
  * This method adds the map to the THREE.js Scene.
  * @param {Object} map
  */
 Drawing.prototype.setMap = function(map) {
-  var floorGeometry = new THREE.BoxGeometry(2000, 1, 2000);
+  var floorGeometry = new THREE.BoxGeometry(2000, 0, 2000);
   var floorMaterial = new THREE.MeshBasicMaterial({
     color: 0xFFFFFF
   });
   var floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
   this.scene.add(floorMesh);
   
-  for (var i = 0; i < map.length; i++) {
-    var newGeometry = new THREE.BoxGeometry(map[i]['hitboxSize'],
-                                            map[i]['hitboxSize'],
-                                            map[i]['hitboxSize']);
-    var newMaterial = new THREE.MeshBasicMaterial({
-      color: 0x0000FF
-    });
-    var newMesh = new THREE.Mesh(newGeometry, newMaterial);
-    newMesh.position.set.apply(this, map[i]['position']);
+  for (var i = 0; i < 500; i++) {
+    var newMesh = Drawing.randomBox();
     this.map.push(newMesh);
     this.scene.add(newMesh);
   }
